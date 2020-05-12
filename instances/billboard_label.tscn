@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://themes/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://themes/fonts/nk57-monospace/nk57-monospace-cd-bd.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://script/billboard_label.gd" type="Script" id=3]
+
+[sub_resource type="QuadMesh" id=6]
+resource_local_to_scene = true
+size = Vector2( 0.5, 0.15 )
+
+[sub_resource type="ViewportTexture" id=9]
+viewport_path = NodePath("viewport")
+
+[sub_resource type="SpatialMaterial" id=8]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+flags_fixed_size = true
+flags_disable_ambient_light = true
+params_billboard_mode = 1
+albedo_texture = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=7]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade_out"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("panel:translation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, 0, -2.6475, 0, 2.6475, 6, -0.385219, -0.023891, 0.385219, 0.023891 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("panel:material/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="billboard_label" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="panel" type="MeshInstance" parent="."]
+mesh = SubResource( 6 )
+material/0 = SubResource( 8 )
+
+[node name="viewport" type="Viewport" parent="."]
+size = Vector2( 250, 80 )
+transparent_bg = true
+handle_input_locally = false
+msaa = 3
+hdr = false
+usage = 0
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="ciccio" type="Control" parent="viewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="viewport/ciccio"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Gennaro  Squasaglia"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/fade_out = SubResource( 5 )

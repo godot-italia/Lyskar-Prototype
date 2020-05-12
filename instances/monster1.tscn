@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.7
+mid_height = 2.0
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id=3]
+radius = 0.5
+
+[sub_resource type="CapsuleMesh" id=4]
+radius = 0.1
+mid_height = 0.5
+
+[sub_resource type="SphereMesh" id=5]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="Animation" id=6]
+resource_name = "loop_idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.43381, 0 ), Vector3( 0, 2.555, 0 ), Vector3( 0, 2.43381, 0 ) ]
+}
+
+[node name="monster1" type="Spatial"]
+
+[node name="body" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43381, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="neck" type="MeshInstance" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553435, 1.34522 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="head" type="MeshInstance" parent="body"]
+transform = Transform( 1, 0, 0, 0, 0.958835, -0.283965, 0, 0.283965, 0.958835, 0, 1.20374, 1.21322 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="crest1" type="MeshInstance" parent="body/head"]
+transform = Transform( 1, 0, 0, 0, 0.941635, -0.336635, 0, 0.336635, 0.941635, 0, 0.386324, -0.328673 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="crest2" type="MeshInstance" parent="body/head"]
+transform = Transform( 1, 0, 0, 0, 0.915016, -0.403418, 0, 0.403418, 0.915016, 0, 0.453772, -0.100932 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="crest3" type="MeshInstance" parent="body/head"]
+transform = Transform( 1, 0, 0, 0, 0.872973, -0.487768, 0, 0.487768, 0.872973, 0, 0.522056, 0.130914 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="crest4" type="MeshInstance" parent="body/head"]
+transform = Transform( 1, 0, 0, 0, 0.778386, -0.627787, 0, 0.627787, 0.778386, 0, 0.524123, 0.380974 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="butt" type="MeshInstance" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.273986, -1.09262 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="torso" type="MeshInstance" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00384426, -0.264444, 0.916648 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="anim" type="AnimationPlayer" parent="body"]
+autoplay = "loop_idle"
+anims/loop_idle = SubResource( 6 )
+
+[node name="Spatial" type="Spatial" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.623581, -0.597536, 1.00978 )

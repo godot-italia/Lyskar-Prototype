@@ -1,0 +1,256 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://script/GUI.gd" type="Script" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+func _pressed():
+	$\"../../pl_stats_box\".visible = !$\"../../pl_stats_box\".visible
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+func _pressed():
+	OS.window_fullscreen = !OS.window_fullscreen
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _pressed():
+	get_tree().quit()
+"
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fps" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -212.0
+margin_top = 22.0
+margin_right = -11.0
+margin_bottom = 44.0
+text = "60"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="HBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 264.0
+margin_bottom = 38.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pl_stats" type="Button" parent="vbox"]
+margin_right = 86.0
+margin_bottom = 23.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "player stats"
+script = SubResource( 1 )
+
+[node name="fullscreen" type="Button" parent="vbox"]
+margin_left = 90.0
+margin_right = 168.0
+margin_bottom = 23.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Fullscreen"
+script = SubResource( 2 )
+
+[node name="quit" type="Button" parent="vbox"]
+margin_left = 172.0
+margin_right = 210.0
+margin_bottom = 23.0
+text = "esci"
+script = SubResource( 3 )
+
+[node name="pl_stats_box" type="VBoxContainer" parent="."]
+margin_left = 15.0
+margin_top = 44.0
+margin_right = 264.0
+margin_bottom = 316.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb1" type="Label" parent="pl_stats_box"]
+margin_right = 249.0
+margin_bottom = 14.0
+text = "accelleration"
+align = 1
+valign = 1
+
+[node name="accelleration" type="HSlider" parent="pl_stats_box"]
+margin_top = 18.0
+margin_right = 249.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 24 )
+focus_mode = 0
+max_value = 160.0
+value = 5.0
+
+[node name="lb" type="Label" parent="pl_stats_box/accelleration"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 81.0
+margin_bottom = 6.0
+text = "150"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb2" type="Label" parent="pl_stats_box"]
+margin_top = 46.0
+margin_right = 249.0
+margin_bottom = 60.0
+text = "friction"
+align = 1
+valign = 1
+
+[node name="friction" type="HSlider" parent="pl_stats_box"]
+margin_top = 64.0
+margin_right = 249.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 24 )
+focus_mode = 0
+max_value = 500.0
+value = 5.0
+
+[node name="lb" type="Label" parent="pl_stats_box/friction"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 81.0
+margin_bottom = 6.0
+text = "150"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb3" type="Label" parent="pl_stats_box"]
+margin_top = 92.0
+margin_right = 249.0
+margin_bottom = 106.0
+text = "jump accelleration"
+align = 1
+valign = 1
+
+[node name="jump_acc" type="HSlider" parent="pl_stats_box"]
+margin_top = 110.0
+margin_right = 249.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 0, 24 )
+focus_mode = 0
+max_value = 150.0
+value = 150.0
+
+[node name="lb" type="Label" parent="pl_stats_box/jump_acc"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 81.0
+margin_bottom = 6.0
+text = "150"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb4" type="Label" parent="pl_stats_box"]
+margin_top = 138.0
+margin_right = 249.0
+margin_bottom = 152.0
+text = "gravity accelleration"
+align = 1
+valign = 1
+
+[node name="gravity_acc" type="HSlider" parent="pl_stats_box"]
+margin_top = 156.0
+margin_right = 249.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 24 )
+focus_mode = 0
+max_value = 300.0
+value = 150.0
+
+[node name="lb" type="Label" parent="pl_stats_box/gravity_acc"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 81.0
+margin_bottom = 6.0
+text = "150"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb5" type="Label" parent="pl_stats_box"]
+margin_top = 184.0
+margin_right = 249.0
+margin_bottom = 198.0
+text = "max speed"
+align = 1
+valign = 1
+
+[node name="max_speed" type="HSlider" parent="pl_stats_box"]
+margin_top = 202.0
+margin_right = 249.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 0, 24 )
+focus_mode = 0
+max_value = 80.0
+value = 80.0
+
+[node name="lb" type="Label" parent="pl_stats_box/max_speed"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 81.0
+margin_bottom = 6.0
+text = "150"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb6" type="Label" parent="pl_stats_box"]
+margin_top = 230.0
+margin_right = 249.0
+margin_bottom = 244.0
+text = "max fall speed"
+align = 1
+valign = 1
+
+[node name="max_fall_speed" type="HSlider" parent="pl_stats_box"]
+margin_top = 248.0
+margin_right = 249.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 0, 24 )
+focus_mode = 0
+max_value = 150.0
+value = 100.0
+
+[node name="lb" type="Label" parent="pl_stats_box/max_fall_speed"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 81.0
+margin_bottom = 6.0
+text = "150"
+__meta__ = {
+"_edit_use_anchors_": false
+}

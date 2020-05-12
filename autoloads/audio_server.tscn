@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://audio/amb_steampunk_factory.ogg" type="AudioStream" id=1]
+[ext_resource path="res://autoloads/audio_server.gd" type="Script" id=2]
+[ext_resource path="res://audio/mus_Bassloop.ogg" type="AudioStream" id=3]
+[ext_resource path="res://audio/sfx_blink.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/sfx_interr_1.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/amb_stadium.ogg" type="AudioStream" id=6]
+
+[node name="audio_server" type="Node"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="menu" type="Node" parent="."]
+
+[node name="ambient" type="AudioStreamPlayer" parent="menu"]
+stream = ExtResource( 1 )
+bus = "ambient"
+
+[node name="music" type="AudioStreamPlayer" parent="menu"]
+stream = ExtResource( 3 )
+bus = "music"
+
+[node name="button_hover" type="AudioStreamPlayer" parent="menu"]
+stream = ExtResource( 4 )
+volume_db = -18.353
+bus = "Menu"
+
+[node name="button_press" type="AudioStreamPlayer" parent="menu"]
+stream = ExtResource( 5 )
+bus = "Menu"
+
+[node name="arena" type="Node" parent="."]
+
+[node name="stadium" type="AudioStreamPlayer" parent="arena"]
+stream = ExtResource( 6 )
+bus = "ambient"
